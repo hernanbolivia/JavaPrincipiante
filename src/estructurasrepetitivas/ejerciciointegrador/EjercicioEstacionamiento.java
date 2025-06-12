@@ -1,6 +1,6 @@
 package estructurasrepetitivas.ejerciciointegrador;
 
-import org.w3c.dom.ls.LSOutput;
+
 
 import java.util.Scanner;
 
@@ -29,51 +29,59 @@ public class EjercicioEstacionamiento {
             System.out.println("2 - Media jornada (5 horas)");
             System.out.println("3 - Jornada completa (10 horas)");
 
-            teclado = new Scanner(System.in);
-            tipoEstacionamiento = teclado.nextInt();
+            if(teclado.hasNextInt()) {
+                tipoEstacionamiento = teclado.nextInt();
+                teclado.nextLine();
 
-            if (tipoEstacionamiento <= 0 || tipoEstacionamiento > 3) {
-                System.out.println("No ingresó un tipo de estacionamiento valido");
-            } else {
+
+                if (tipoEstacionamiento <= 0 || tipoEstacionamiento > 3) {
+                    System.out.println("No ingresó un tipo de estacionamiento valido");
+                } else {
                 /*
                 Los tipo de estacionamiento son:
                 - Por hora (3usd)
                 - Media jornada (15 usd + 5% descto)
                 - Jornada completa (30 usd + 10% descuento)
                  */
-                if (tipoEstacionamiento == 1) {
+                    if (tipoEstacionamiento == 1) {
 
-                    System.out.println("Ingrese la cantidad de horas que desea estacionar ");
-                    cantHoras = teclado.nextInt();
-                    total = cantHoras * 3;
-
-                    System.out.println("El total a pagar es: $" + total + " usd");
-
-                    cont1++;
-                    totalDia += total;
-
-                } else {
-                    if (tipoEstacionamiento == 2) {
-                        System.out.println("El servicio de media jornada es de 15 usd + 5% descuento");
-                        total = 15 - (15 * 0.05);
+                        System.out.println("Ingrese la cantidad de horas que desea estacionar ");
+                        cantHoras = teclado.nextInt();
+                        total = cantHoras * 3;
 
                         System.out.println("El total a pagar es: $" + total + " usd");
-                        cont2++;
+
+                        cont1++;
                         totalDia += total;
 
                     } else {
-                        System.out.println("El servicio de jornada completa es de 30 usd + 10% descuento");
-                        total = 30 - (30 * 0.10);
-                        System.out.println("El total a pagar es: $" + total + " usd");
-                        cont3++;
-                        totalDia += total;
-                    }
+                        if (tipoEstacionamiento == 2) {
+                            System.out.println("El servicio de media jornada es de 15 usd + 5% descuento");
+                            total = 15 - (15 * 0.05);
 
+                            System.out.println("El total a pagar es: $" + total + " usd");
+                            cont2++;
+                            totalDia += total;
+
+                        } else {
+                            System.out.println("El servicio de jornada completa es de 30 usd + 10% descuento");
+                            total = 30 - (30 * 0.10);
+                            System.out.println("El total a pagar es: $" + total + " usd");
+                            cont3++;
+                            totalDia += total;
+                        }
+
+                    }
+                    System.out.println("---- Gracias por su compra----");
                 }
-                System.out.println("---- Gracias por su compra----");
+            }else{
+
+                System.out.println("Entrada inválida. Debe ingresar un número entero. Por favor, intente nuevamente.");
+                teclado.nextLine();
             }
 
-            teclado = new Scanner(System.in);
+
+
         }
 
 
